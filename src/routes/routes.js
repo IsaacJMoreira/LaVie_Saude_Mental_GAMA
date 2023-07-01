@@ -3,10 +3,7 @@
 ////////////////////////////////////////////////////////////////////
 
 import { Router } from 'express';
-import { UsersController } from '../controllers/users/users.controller.js';
-import { validate } from '../middlewares/middlewaresPsicologos.js';
-import { AuthController } from '../controllers/auth/auth.controller.js';
-import { auth } from '../middlewares/auth.middleware.js';
+
 
 const routes = Router();
 
