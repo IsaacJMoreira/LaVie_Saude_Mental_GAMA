@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////
-/*                           MENSAGENS DE ERRO                  */
+/*                      MENSAGENS DE ERRO                       */
 //////////////////////////////////////////////////////////////////
 const errors = {
     email_ou_senha_invalido: "E-mail ou senha inválido, verifique e tente novamente",  

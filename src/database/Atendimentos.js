@@ -22,7 +22,7 @@ export const Atendimentos = db.define('Atendimentos', {
 }, { 
   timestamps: false
 })
-//Importação 🛬  das foreign keys 🔑 
+//Importação 🛬 das foreign keys 🔑 
 Atendimentos.associate = function(models) {
   Atendimentos.belongsTo(models.Pacientes, { foreignKey: 'id_paciente' });
 };
