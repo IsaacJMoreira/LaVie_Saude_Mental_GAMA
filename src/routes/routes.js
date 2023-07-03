@@ -12,8 +12,8 @@ const routes = Router();
 ////////////////////////////////////////////////////////////////////
 
 routes.get(
-    '/psicologos',
-    middlewaresPsicologos.getAll,
+    '/psicologos',   
+    middlewaresPsicologos.getAll,    
     controllerPsicologos.getAll
     );
 
@@ -26,6 +26,13 @@ routes.get(
 routes.post('/psicologos',
     middlewaresPsicologos.postPsicologo,
     controllerPsicologos.postPsicologo
+    );
+
+
+    //ATENÇÃO ⚠  >>>>>>> POST LOGIN <<<<<<<
+    routes.post('/login',
+    middlewaresPsicologos.postLogin, 
+    controllerPsicologos.postLogin
     );
 
 routes.put(

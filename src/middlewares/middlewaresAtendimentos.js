@@ -1,3 +1,5 @@
+//VAI QUE É TUA, VALFRIDO
+
 import errors from '../core/errors/errors.js';
 
 export const validate = (req, res, next) => {
