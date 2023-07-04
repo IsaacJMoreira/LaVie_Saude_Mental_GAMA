@@ -20,11 +20,7 @@ export const Psicologos = db.define('users', {
     type: DataType.STRING(1000),
   }
 }, { 
-  timestamps: false
+  tableName: 'psicologos'
 })
 
-//Exportação 🛫 da primaryKey 🔑 
 
-Psicologos.associate = function(models) {
-  Psicologos.hasMany(models.Atendimentos, { foreignKey: 'id' });
-};
