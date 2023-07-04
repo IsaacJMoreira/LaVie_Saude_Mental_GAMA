@@ -1,25 +1,23 @@
 {
-  "name": "api-notifications",
+  "name": "node_101",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "type": "module",
+  "description": "primeira pratica com node",
+  "main": "src/app.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon ./src/server.js",
-    "watch": "node --watch ./src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node /src/app.js",
+    "dev": "nodemon app.js"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Isaac na Gama",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0",
-    "mysql2": "^3.4.2",
+    "mysql2": "^3.4.0",
     "sequelize": "^6.32.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^1.14.9",
+    "sequelize-cli": "^5.3.0",
+    "sucrase": "^3.32.0"
   }
 }

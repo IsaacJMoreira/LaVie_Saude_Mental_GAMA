@@ -9,9 +9,17 @@ export const Atendimentos = db.define('Atendimentos', {
  },
  id_paciente:{
   type: DataType.INTEGER,
+  references:{
+    model: Pacientes,
+    key: 'id',
+  }
  },
  id_psicologo:{
-  type: DataType.INTEGER
+  type: DataType.INTEGER,
+  references:{
+    model: Psicologos,
+    key: 'id',
+  }
  },
  atendimento:{
   type: DataType.DATETIME
@@ -20,12 +28,6 @@ export const Atendimentos = db.define('Atendimentos', {
   type: DataType.STRING(1000)
  }
 }, { 
-  timestamps: false
+  tableName: 'atendimentos'
 })
-//Importação 🛬 das foreign keys 🔑 
-Atendimentos.associate = function(models) {
-  Atendimentos.belongsTo(models.Pacientes, { foreignKey: 'id_paciente' });
-};
-Atendimentos.associate = function(models) {
-  Atendimentos.belongsTo(models.Psicologos, { foreignKey: 'id_psicologo' });
-};
+
