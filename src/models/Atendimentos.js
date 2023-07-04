@@ -1,33 +1,36 @@
-import { DataTypes } from "sequelize";
-import { db } from "../config/db.config.js";
+const { DataTypes } = require( "sequelize");
+const db  = require('../database');
+const Pacientes = require('../models/Pacientes.js');
+const Psicologos = require('../models/Psicologos.js');
 
-export const Atendimentos = db.define('Atendimentos', {
+ const Atendimentos = db.define('Atendimentos', {
  id:{
-  type: DataType.INTEGER,
+  type: DataTypes.INTEGER,
   primaryKey: true,
   autoIncrement: true
  },
  id_paciente:{
-  type: DataType.INTEGER,
+  type: DataTypes.INTEGER,
   references:{
     model: Pacientes,
     key: 'id',
   }
  },
  id_psicologo:{
-  type: DataType.INTEGER,
+  type: DataTypes.INTEGER,
   references:{
     model: Psicologos,
     key: 'id',
   }
  },
  atendimento:{
-  type: DataType.DATETIME
+  type: DataTypes.DATE //ATENÇÃO ⚠ >>> COMO FAZER COM DATETIME?
  },
  OBS:{
-  type: DataType.STRING(1000)
+  type: DataTypes.STRING(1000)
  }
 }, { 
   tableName: 'atendimentos'
 })
 
+module.exports = Atendimentos;

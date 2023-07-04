@@ -1,4 +1,4 @@
-const Psicologos = require("../database/Psicologos")
+const { Psicologos } = require("../models")
 
 const controllerPsicologos = { 
     //GET

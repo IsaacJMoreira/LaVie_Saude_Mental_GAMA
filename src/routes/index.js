@@ -4,7 +4,7 @@
 ////////////////////////////////////////////////////////////////////
 
 const express = require('express');
-const produtoController = require( "../controllers/produtoController.js");
+const controllerPsicologos = require( "../controllers/controllerPsicologos.js");
 const routes = express.Router();
 
 routes.use(express.json());//allows the server to uses JSON encoding

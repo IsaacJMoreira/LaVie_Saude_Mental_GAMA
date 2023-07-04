@@ -1,26 +1,26 @@
-import { DataTypes } from "sequelize";
-import { db } from "../config/db.config.js";
+const { DataTypes } = require( "sequelize");
+const  db  =  require('../database');
 
-export const Psicologos = db.define('users', {
+const Psicologos = db.define('Psicologos', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
   nome:{
-    type: DataType.STRING(100),
+    type: DataTypes.STRING(100),
   },
   email:{
-    type: DataType.STRING(100),
+    type: DataTypes.STRING(100),
   },
   senha:{
-    type: DataType.STRING(30),
+    type: DataTypes.STRING(30),
   },
   apresentacao:{
-    type: DataType.STRING(1000),
+    type: DataTypes.STRING(1000),
   }
 }, { 
   tableName: 'psicologos'
 })
 
-
+module.exports = Psicologos;
