@@ -1,26 +1,112 @@
+////////////////////////////////////////////////////////////////////
+/*                        REQUIREMENTS                            */
+////////////////////////////////////////////////////////////////////
+
 import { Router } from 'express';
-import { UsersController } from '../controllers/users/users.controller.js';
-import { validate } from '../middlewares/validate.js';
-import { AuthController } from '../controllers/auth/auth.controller.js';
-import { auth } from '../middlewares/auth.middleware.js';
+
 
 const routes = Router();
 
+////////////////////////////////////////////////////////////////////
+/*                        CRUD PSICÓLOGO                          */
+////////////////////////////////////////////////////////////////////
 
-// AUTH
+routes.get(
+    '/psicologos',   
+    middlewaresPsicologos.getAll,    
+    controllerPsicologos.getAll
+    );
 
-const authController = new AuthController();
+routes.get(
+    '/psicologos/:id',
+    middlewaresPsicologos.getPsicologoById,
+    controllerPsicologos.getPsicologoById
+    );
 
-routes.post('/login', authController.login)
-routes.post('/validate', authController.validate)
+routes.post('/psicologos',
+    middlewaresPsicologos.postPsicologo,
+    controllerPsicologos.postPsicologo
+    );
 
 
-const usersController = new UsersController();
+    //ATENÇÃO ⚠  >>>>>>> POST LOGIN <<<<<<<
+    routes.post('/login',
+    middlewaresPsicologos.postLogin, 
+    controllerPsicologos.postLogin
+    );
+
+routes.put(
+    '/psicologos/:id',
+    middlewaresPsicologos.putPsicologoById,
+    controllerPsicologos.putPsicologoById
+    );
+
+routes.delete(
+    '/psicologos/:id',
+    middlewaresPsicologos.deletePsicologoById,
+    controllerPsicologos.deletePsicologoById
+    );
+    
+////////////////////////////////////////////////////////////////////
+/*                        CRUD PACIENTE                           */
+////////////////////////////////////////////////////////////////////
+
+routes.get(
+    '/pacientes',
+    middlewaresPacientes.getAll,
+    controllerPacientes.getAll
+    );
+
+routes.get(
+    '/pacientes/:id',
+    middlewaresPacientes.getPacienteById,
+    controllerPacientes.getPacienteById
+    );
+
+routes.post(
+    '/pacientes',
+    middlewaresPacientes.postPaciente,
+    controllerPacientes.postPaciente
+    );
+
+routes.put(
+    '/pacientes/:id',
+    middlewaresPacientes.putPacienteById,
+    controllerPacientes.putPacienteById
+    );
+
+routes.delete(
+    '/pacientes/:id',
+    middlewaresPacientes.deletePacienteById,
+    controllerPacientes.deletePacienteById
+    );    
+
+////////////////////////////////////////////////////////////////////
+/*                       CRUD ATENDIMENTO                         */
+////////////////////////////////////////////////////////////////////
+
+routes.get(
+    '/atendimentos',
+    middlewaresAtendimentos.getAll,
+    controllerAtendimentos.getAll
+    );
+
+routes.get(
+    '/atendimentos/:id',
+    middlewaresAtendimentos.getAtendimentoById,
+    controllerAtendimentos.getAtendimentoById
+    );
+
+routes.post(
+    '/atendimentos',
+    middlewaresAtendimentos.postAtendimento,
+    controllerAtendimentos.postAtendimento
+    );
 
 
-routes.use(auth) // middleware auth
-routes.get('/users',  usersController.findAll)
-routes.post('/users', validate, usersController.create) 
+////////////////////////////////////////////////////////////////////
+/*                       EXPORT 🛫 ✈ 🛬                         */
+////////////////////////////////////////////////////////////////////
 
 
 export default routes;

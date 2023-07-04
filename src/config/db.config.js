@@ -1,8 +1,9 @@
 import Sequelize from 'sequelize';
 
-const DB_NAME='DB_NAME';
-const DB_USER='DB_USER';
-const DB_PASS='DB_PASS';
+//just for my system
+const DB_NAME='LaVie';
+const DB_USER='root';
+const DB_PASS='1234';
 const DB_CONFIGS = {
   dialect: 'mysql',
   host: 'localhost',
