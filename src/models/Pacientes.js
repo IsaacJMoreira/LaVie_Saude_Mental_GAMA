@@ -17,12 +17,7 @@ export const Pacientes = db.define('users', {
     type: DataType.DATE,
   }
 }, { 
-  timestamps: false
+  tableName: 'pacientes'
 })
 
-//Exportação 🛫 da primaryKey 🔑 
-
-Pacientes.associate = function(models) {
-  Pacientes.hasMany(models.Atendimentos, { foreignKey: 'id' });
-};
 
