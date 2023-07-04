@@ -1,15 +1,24 @@
 import errors from '../core/errors/errors.js';
 
-export const validate = (req, res, next) => {
-  const { body: { name, email } } = req;
+const Psicologos = require ("../controllers/controllerPsicologos.js");
 
-  if (!name || !email) {
-    return res.status(400).json({ message: errors.EMAIL_OR_NAME_EMPTY })
+const login = async (req, res, next) => {
+  const { email, senha } = req.body;
+
+  const user = await Psicologos.findOne({
+    where: {
+      email: email,
+      senha: senha,
+    },
+  });
+
+  if (!user) {
+    return res.status(401).json({ message: "Credenciais inválidas" });
   }
 
-  if (name.length > 50)  {
-    return res.status(400).json({ message: errors.NAME_LIMIT_CHARACTER })
-  }
+  req.usuarioAutenticado = user;
 
   next();
-}
+};
+
+module.exports = login

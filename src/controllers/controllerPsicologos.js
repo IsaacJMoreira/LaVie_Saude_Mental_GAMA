@@ -47,7 +47,7 @@ const controllerPsicologos = {
         });
         res.json("Psicologo atualizado com sucesso!");
     },
-    // GET por ID
+    // Get por ID
   async getPsicologoById(req, res) {
     const { id } = req.params;
     const psicologo = await Psicologos.findByPk(id);
