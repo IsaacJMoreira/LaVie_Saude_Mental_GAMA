@@ -6,9 +6,20 @@
 const express = require('express');
 const controllerPsicologos = require( "../controllers/controllerPsicologos.js");
 const middlewaresPsicologos = require("../middlewares/middlewaresPsicologos.js");
+const controllerLogin = require("../controllers/controllerLogin.js");
 const routes = express.Router();
 
 routes.use(express.json());//allows the server to uses JSON encoding
+
+////////////////////////////////////////////////////////////////////
+/*                             LOGIN                              */
+////////////////////////////////////////////////////////////////////
+
+
+    //ATENÇÃO ⚠  >>>>>>> POST LOGIN <<<<<<<
+    routes.post('/login',
+    controllerLogin.postLogin
+    );
 
 
 ////////////////////////////////////////////////////////////////////
@@ -29,13 +40,6 @@ routes.post('/psicologos',
     middlewaresPsicologos.postPsicologo,
     controllerPsicologos.postPsicologo
     );
-
-
-//     //ATENÇÃO ⚠  >>>>>>> POST LOGIN <<<<<<<
-//     routes.post('/login',
-//     middlewaresPsicologos.postLogin, 
-//     controllerPsicologos.postLogin
-//     );
 
 routes.put(
     '/psicologos/:id',
