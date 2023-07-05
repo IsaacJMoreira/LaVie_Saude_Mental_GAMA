@@ -6,6 +6,7 @@
 const express = require('express');
 const controllerPsicologos = require( "../controllers/controllerPsicologos.js");
 const routes = express.Router();
+const pacienteCreateValidation = require("../validations/pacientes/cadastroPaciente.js")
 
 routes.use(express.json());//allows the server to uses JSON encoding
 
@@ -68,13 +69,13 @@ routes.get(
 
 routes.post(
     '/pacientes',
-    middlewaresPacientes.postPaciente,
+    pacienteCreateValidation,
     controllerPacientes.postPaciente
     );
 
 routes.put(
     '/pacientes/:id',
-    middlewaresPacientes.putPacienteById,
+    pacienteCreateValidation,
     controllerPacientes.putPacienteById
     );
 

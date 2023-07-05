@@ -4,11 +4,12 @@ const routes = require('./routes');//import the routes from the  /routes directo
 const db = require('./database');
 const app = express();
 const port = 3000;
+const middlewaresPacientes = require("./middlewares/middlewaresPacientes");
 
 db.hasConnection();
 
 app.use(routes);//uses the routes imported from the /routes directory
-
+app.use(middlewaresPacientes);// Erro validação pacientes
 
 /////////////////////////////////////////////////////////////////
 /*                 START THE SERVER WE CREATED                 */

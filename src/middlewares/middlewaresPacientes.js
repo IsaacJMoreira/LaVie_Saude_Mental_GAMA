@@ -1,6 +1,25 @@
 //VAI, DIEGO
 
-import errors from '../core/errors/errors.js';
+const { ValidationError } = require("express-validation");
+
+module.exports = (error, req, res, next) => {
+  if(error instanceof ValidationError){
+    return res.status(error.statusCode).json(error);
+  }
+
+  return res.status(500).json(error);
+};
+
+
+
+
+
+
+
+
+
+
+/*import errors from '../core/errors/errors.js';
 
 export const validate = (req, res, next) => {
   const { body: { name, email } } = req;
@@ -14,4 +33,5 @@ export const validate = (req, res, next) => {
   }
 
   next();
-}
+}*/
+
