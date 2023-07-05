@@ -15,17 +15,15 @@ routes.use(express.json());//allows the server to uses JSON encoding
 /*                        CRUD PSICÓLOGO                          */
 ////////////////////////////////////////////////////////////////////
 
-// routes.get(
-//     '/psicologos',   
-//     middlewaresPsicologos.getAll,    
-//     controllerPsicologos.getAll
-//     );
+routes.get(
+    '/psicologos',      
+    controllerPsicologos.getAll
+    );
 
-// routes.get(
-//     '/psicologos/:id',
-//     middlewaresPsicologos.getPsicologoById,
-//     controllerPsicologos.getPsicologoById
-//     );
+routes.get(
+    '/psicologos/:id',
+    controllerPsicologos.getPsicologoById
+    );
 
 routes.post('/psicologos',
     middlewaresPsicologos.postPsicologo,
@@ -39,17 +37,16 @@ routes.post('/psicologos',
 //     controllerPsicologos.postLogin
 //     );
 
-// routes.put(
-//     '/psicologos/:id',
-//     middlewaresPsicologos.putPsicologoById,
-//     controllerPsicologos.putPsicologoById
-//     );
+routes.put(
+    '/psicologos/:id',
+    middlewaresPsicologos.putPsicologoById,
+    controllerPsicologos.putPsicologoById
+    );
 
-// routes.delete(
-//     '/psicologos/:id',
-//     middlewaresPsicologos.deletePsicologoById,
-//     controllerPsicologos.deletePsicologoById
-//     );
+routes.delete(
+    '/psicologos/:id',
+    controllerPsicologos.deletePsicologoById
+    );
     
 // ////////////////////////////////////////////////////////////////////
 // /*                        CRUD PACIENTE                           */

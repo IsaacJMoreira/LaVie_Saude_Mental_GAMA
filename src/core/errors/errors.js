@@ -6,4 +6,4 @@ const errors = {
     id_nao_encontrada: "Id não encontrado",
 }
 
-export default errors;
+module.exports = errors;
