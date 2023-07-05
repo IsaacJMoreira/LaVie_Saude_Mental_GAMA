@@ -1,26 +1,31 @@
-const { Psicologos } = require("../models")
+const { Psicologos } = require("../models");
+const bcrypt = require("bcryptjs");
 
 const controllerPsicologos = { 
     //GET
-    listaPisicologos:async (req, res) =>{
+    getAll: async (req, res) =>{
         const listagemPsicologos = await Psicologos.findAll();
 
         res.json(listagemPsicologos);
     },
-    //Post
-    async cadastroPsicologo(req,res) {
-        const{nome,email,senha}= req.body
+    //Post 
+    // EDIT BY ISAAC: 🔒 PASSWORD CRYPTOGRAPHY IMPLEMENTED
+    postPsicologo: async (req,res) => {//THE NAME OF THIS FUNCTION WAS CHANGED
+        const{nome,email,senha, apresentacao}= req.body
+
+        const newEncryptedPass = bcrypt.hashSync(senha, 10);
 
         const novoPsicologo = await Psicologos.create({
             "nome": nome,
             "email" : email,
-            "senha": senha
+            "senha": senha,
+            "apresentacao": apresentacao
         })
 
-        res.json("Novo psicologo cadastrado!")
+       return res.status(201);//NO RETURN NEEDED BESIDED THE CODE
     },
     //Delete
-    async deletePsicologo(req,res) {
+    deletePsicologoById: async (req,res) => {
         const {id} = req.params;
 
         await Psicologos.destroy({
@@ -31,7 +36,7 @@ const controllerPsicologos = {
         res.json("Psicologo deletado com sucesso!")
     },
     //Update
-    async updatePsicologo(req,res){
+    putPsicologoById: async (req,res) => {
         const {id} = req.params;
         const{nome,email,senha}= req.body
 
@@ -48,7 +53,7 @@ const controllerPsicologos = {
         res.json("Psicologo atualizado com sucesso!");
     },
     // Get por ID
-  async getPsicologoById(req, res) {
+    getPsicologoById: async (req,res) => {
     const { id } = req.params;
     const psicologo = await Psicologos.findByPk(id);
     if (!psicologo) {
