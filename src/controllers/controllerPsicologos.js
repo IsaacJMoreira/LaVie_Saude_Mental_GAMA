@@ -1,5 +1,6 @@
 const { Psicologos } = require("../models");
 const bcrypt = require("bcryptjs");
+const errors = require('../core/errors/errors.js')
 
 const controllerPsicologos = { 
     //GET
@@ -8,6 +9,7 @@ const controllerPsicologos = {
 
         res.json(listagemPsicologos);
     },
+
     //Post 
     // EDIT BY ISAAC: 🔒 PASSWORD CRYPTOGRAPHY IMPLEMENTED
     postPsicologo: async (req,res) => {//THE NAME OF THIS FUNCTION WAS CHANGED
@@ -21,42 +23,58 @@ const controllerPsicologos = {
             "senha": newEncryptedPass,
             "apresentacao": apresentacao
         })
-       return res.status(201).json(novoPsicologo);//NO RETURN NEEDED BESIDED THE CODE
+       return res.status(201).json(novoPsicologo);
     },
     //Delete
+    // EDIT BY ISAAC: DELETES ONLY IF ID IS PRESENT
     deletePsicologoById: async (req,res) => {
         const {id} = req.params;
 
+        const psicologo = await Psicologos.findByPk(id);
+
+        if(!psicologo) return res.status(404).json( errors.id_nao_encontrada );
+
         await Psicologos.destroy({
-        where:{
-            id
-        }
+            where: {
+                id        
+            }
+        }).then(()=>{
+            res.status(204).end(); 
         });
-        res.json("Psicologo deletado com sucesso!")
     },
     //Update
+    // EDIT BY ISAAC: 🔒 PASSWORD CRYPTOGRAPHY IMPLEMENTED
     putPsicologoById: async (req,res) => {
-        const {id} = req.params;
-        const{nome,email,senha}= req.body
+        const { id } = req.params;
+
+        const psicologo = await Psicologos.findByPk(id);
+
+        if(!psicologo) return res.status(400).json( errors.id_nao_encontrada );
+
+        const{ nome, email, senha, apresentacao }= req.body
+
+        
+        const newEncryptedPass = senha? bcrypt.hashSync(senha, 10): null;
 
         const psicologoAtualizado = await Psicologos.update({
             nome,
             email,
-            senha
+            newEncryptedPass, 
+            apresentacao
         },
         {
             where: {
                 id
             },
         });
-        res.json("Psicologo atualizado com sucesso!");
+        return res.json(await Psicologos.findByPk(id));
     },
     // Get por ID
     getPsicologoById: async (req,res) => {
     const { id } = req.params;
     const psicologo = await Psicologos.findByPk(id);
     if (!psicologo) {
-      return res.status(404).json({ message: "Psicologo não encontrado" });
+      return res.status(404).json( errors.id_nao_encontrada );
     }
     res.json(psicologo);
   },
