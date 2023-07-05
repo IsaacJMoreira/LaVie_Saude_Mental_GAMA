@@ -10,6 +10,16 @@ const controllerPsicologos = {
         res.json(listagemPsicologos);
     },
 
+     // Get por ID
+     getPsicologoById: async (req,res) => {
+        const { id } = req.params;
+        const psicologo = await Psicologos.findByPk(id);
+        if (!psicologo) {
+          return res.status(404).json( errors.id_nao_encontrada );
+        }
+        res.json(psicologo);
+      },
+
     //Post 
     // EDIT BY ISAAC: 🔒 PASSWORD CRYPTOGRAPHY IMPLEMENTED
     postPsicologo: async (req,res) => {//THE NAME OF THIS FUNCTION WAS CHANGED
@@ -69,14 +79,5 @@ const controllerPsicologos = {
         });
         return res.json(await Psicologos.findByPk(id));
     },
-    // Get por ID
-    getPsicologoById: async (req,res) => {
-    const { id } = req.params;
-    const psicologo = await Psicologos.findByPk(id);
-    if (!psicologo) {
-      return res.status(404).json( errors.id_nao_encontrada );
-    }
-    res.json(psicologo);
-  },
 }
 module.exports = controllerPsicologos;
