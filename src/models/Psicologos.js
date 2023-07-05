@@ -20,7 +20,10 @@ const Psicologos = db.define('Psicologos', {
     type: DataTypes.STRING(1000),
   }
 }, { 
-  tableName: 'psicologos'
-})
+  tableName: 'psicologos',
+  timestamps: false,
+  createdAt: false,
+  updatedAt: false
+});
 
 module.exports = Psicologos;

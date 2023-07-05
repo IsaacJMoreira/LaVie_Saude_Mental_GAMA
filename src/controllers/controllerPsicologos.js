@@ -18,11 +18,10 @@ const controllerPsicologos = {
         const novoPsicologo = await Psicologos.create({
             "nome": nome,
             "email" : email,
-            "senha": senha,
+            "senha": newEncryptedPass,
             "apresentacao": apresentacao
         })
-
-       return res.status(201);//NO RETURN NEEDED BESIDED THE CODE
+       return res.status(201).json(novoPsicologo);//NO RETURN NEEDED BESIDED THE CODE
     },
     //Delete
     deletePsicologoById: async (req,res) => {
