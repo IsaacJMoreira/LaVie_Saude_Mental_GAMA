@@ -17,7 +17,10 @@ const Pacientes = db.define('users', {
     type: DataTypes.DATE,
   }
 }, { 
-  tableName: 'pacientes'
-})
+  tableName: 'pacientes',
+  timestamps: false,
+  createdAt: false,
+  updatedAt: false
+});
 
 module.exports = Pacientes;
