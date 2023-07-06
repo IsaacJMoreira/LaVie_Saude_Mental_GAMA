@@ -3,7 +3,7 @@ module.exports = {
     host:    'localhost',
     username:'root',
     password:'1234',
-    database:'LaVie',
+    database:'nodeApi',
     define: {
         timestamps: true, 
         underscored: true,
