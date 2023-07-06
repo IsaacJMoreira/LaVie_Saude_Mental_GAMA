@@ -30,7 +30,10 @@ const Psicologos = require('../models/Psicologos.js');
   type: DataTypes.STRING(1000)
  }
 }, { 
-  tableName: 'atendimentos'
-})
+  tableName: 'atendimentos',
+  timestamps: false,
+  createdAt: false,
+  updatedAt: false
+});
 
 module.exports = Atendimentos;

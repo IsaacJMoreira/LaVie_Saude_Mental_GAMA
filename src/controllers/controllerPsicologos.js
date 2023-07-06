@@ -1,60 +1,83 @@
-const { Psicologos } = require("../models")
+const { Psicologos } = require("../models");
+const bcrypt = require("bcryptjs");
+const errors = require('../core/errors/errors.js')
 
 const controllerPsicologos = { 
     //GET
-    listaPisicologos:async (req, res) =>{
+    getAll: async (req, res) =>{
         const listagemPsicologos = await Psicologos.findAll();
 
         res.json(listagemPsicologos);
     },
-    //Post
-    async cadastroPsicologo(req,res) {
-        const{nome,email,senha}= req.body
+
+     // Get por ID
+     getPsicologoById: async (req,res) => {
+        const { id } = req.params;
+        const psicologo = await Psicologos.findByPk(id);
+        if (!psicologo) {
+          return res.status(404).json( errors.id_nao_encontrada );
+        }
+        res.json(psicologo);
+      },
+
+    //Post 
+    // EDIT BY ISAAC: 🔒 PASSWORD CRYPTOGRAPHY IMPLEMENTED
+    postPsicologo: async (req,res) => {//THE NAME OF THIS FUNCTION WAS CHANGED
+        const{nome,email,senha, apresentacao}= req.body
+
+        const newEncryptedPass = bcrypt.hashSync(senha, 10);
 
         const novoPsicologo = await Psicologos.create({
             "nome": nome,
             "email" : email,
-            "senha": senha
+            "senha": newEncryptedPass,
+            "apresentacao": apresentacao
         })
-
-        res.json("Novo psicologo cadastrado!")
+       return res.status(201).json(novoPsicologo);
     },
     //Delete
-    async deletePsicologo(req,res) {
+    // EDIT BY ISAAC: DELETES ONLY IF ID IS PRESENT
+    deletePsicologoById: async (req,res) => {
         const {id} = req.params;
 
+        const psicologo = await Psicologos.findByPk(id);
+
+        if(!psicologo) return res.status(404).json( errors.id_nao_encontrada );
+
         await Psicologos.destroy({
-        where:{
-            id
-        }
+            where: {
+                id        
+            }
+        }).then(()=>{
+            res.status(204).end(); 
         });
-        res.json("Psicologo deletado com sucesso!")
     },
     //Update
-    async updatePsicologo(req,res){
-        const {id} = req.params;
-        const{nome,email,senha}= req.body
+    // EDIT BY ISAAC: 🔒 PASSWORD CRYPTOGRAPHY IMPLEMENTED
+    putPsicologoById: async (req,res) => {
+        const { id } = req.params;
+
+        const psicologo = await Psicologos.findByPk(id);
+
+        if(!psicologo) return res.status(400).json( errors.id_nao_encontrada );
+
+        const{ nome, email, senha, apresentacao }= req.body
+
+        
+        const newEncryptedPass = senha? bcrypt.hashSync(senha, 10): null;
 
         const psicologoAtualizado = await Psicologos.update({
             nome,
             email,
-            senha
+            newEncryptedPass, 
+            apresentacao
         },
         {
             where: {
                 id
             },
         });
-        res.json("Psicologo atualizado com sucesso!");
+        return res.json(await Psicologos.findByPk(id));
     },
-    // Get por ID
-  async getPsicologoById(req, res) {
-    const { id } = req.params;
-    const psicologo = await Psicologos.findByPk(id);
-    if (!psicologo) {
-      return res.status(404).json({ message: "Psicologo não encontrado" });
-    }
-    res.json(psicologo);
-  },
 }
 module.exports = controllerPsicologos;
