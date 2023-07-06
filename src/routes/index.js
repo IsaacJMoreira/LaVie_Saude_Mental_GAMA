@@ -54,43 +54,43 @@ routes.delete(
     controllerPsicologos.deletePsicologoById
 );
 
-// ////////////////////////////////////////////////////////////////////
-// /*                        CRUD PACIENTE                           */
-// ////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+/*                        CRUD PACIENTE                           */
+////////////////////////////////////////////////////////////////////
 
-// routes.get(
-//     '/pacientes',
-//     //middlewaresPacientes.getAll,
-//     controllerPacientes.getAll
-//     );
+routes.get(
+    '/pacientes',
+    //middlewaresPacientes.getAll,
+    controllerPacientes.getAll
+    );
 
-// routes.get(
-//     '/pacientes/:id',
-//    // middlewaresPacientes.getPacienteById,
-//     controllerPacientes.getPacienteById
-//     );
+routes.get(
+    '/pacientes/:id',
+   // middlewaresPacientes.getPacienteById,
+    controllerPacientes.getPacienteById
+    );
 
-// routes.post(
-//     '/pacientes',
-//     //middlewaresPacientes.postPaciente,
-//     controllerPacientes.postPaciente
-//     );
+routes.post(
+    '/pacientes',
+    //middlewaresPacientes.postPaciente,
+    controllerPacientes.postPaciente
+    );
 
-// routes.put(
-//     '/pacientes/:id',
-//    // middlewaresPacientes.putPacienteById,
-//     controllerPacientes.putPacienteById
-//     );
+routes.put(
+    '/pacientes/:id',
+   // middlewaresPacientes.putPacienteById,
+    controllerPacientes.putPacienteById
+    );
 
-// routes.delete(
-//     '/pacientes/:id',
-//     //middlewaresPacientes.deletePacienteById,
-//     controllerPacientes.deletePacienteById
-//     );    
+routes.delete(
+    '/pacientes/:id',
+    //middlewaresPacientes.deletePacienteById,
+    controllerPacientes.deletePacienteById
+    );    
 
-// ////////////////////////////////////////////////////////////////////
-// /*                       CRUD ATENDIMENTO                         */
-// ////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+/*                       CRUD ATENDIMENTO                         */
+////////////////////////////////////////////////////////////////////
 
 routes.get(
     '/atendimentos',

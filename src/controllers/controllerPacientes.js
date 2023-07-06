@@ -4,7 +4,7 @@ const { Pacientes } = require("../models");
 const controllerPacientes = {
     async getAll(req, res){
         const listaPacientes = await Pacientes.findAll({
-            include: Atendimentos
+            include: Atendimento //🚩 
         });
 
         res.status(200).json(listaPacientes);
@@ -14,7 +14,7 @@ const controllerPacientes = {
         const { id } = req.params;
         const pacienteById = await Pacientes.findByPk(id);
         
-        if(!id) return res.status(404).json("ID não encontrado")
+        if(!id) return res.status(404).json("ID não encontrado")//🚩 
         
         res.status(200).json(pacienteById);
     },
@@ -48,13 +48,13 @@ const controllerPacientes = {
         }
         );
 
-        res.status(200).json(`Paciente atualizado: ${pacienteAtualizado}`);
+        res.status(200).json(`Paciente atualizado: ${pacienteAtualizado}`);//🚩 
     },
 
     async deletePacienteById(req, res){
         const { id } = req.params;
 
-        if(!id) return res.status(404).json("ID não encontrado")
+        if(!id) return res.status(404).json("ID não encontrado")//🚩 
 
         await Pacientes.destroy({
             where:{
@@ -62,7 +62,7 @@ const controllerPacientes = {
             },
         });
 
-        res.status(204).json("Paciente deletado");
+        res.status(204).json("Paciente deletado");//🚩 
 
     },
 
