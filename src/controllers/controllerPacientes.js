@@ -1,5 +1,5 @@
 //DIEGO
-import { Pacientes, Atendimentos } from ("../models");
+const { Pacientes } = require("../models");
 
 const controllerPacientes = {
     async getAll(req, res){
