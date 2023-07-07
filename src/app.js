@@ -6,6 +6,8 @@ const db = require('./database');
 const app = express();
 const port = 3000;
 
+const EQUIPE = "EQUIPE 1 \n>ISAAC MOREIRA\n>VALFRIDO BATISTA\n>APOLO LEONARD\n>DIEGO VICENTINI\n";
+
 db.hasConnection();
 
 app.use(routes);//uses the routes imported from the /routes directory
@@ -24,4 +26,4 @@ app.use(errorHandler);
 // appear cleaner. The callback function that we pass to it is only a 
 // log, but we could and probaby should do more.
 
-app.listen(port, ()=> console.log("🔥🔥🔥 TÔ RODANDO!!! 🔥🔥🔥"));
+app.listen(port, ()=> console.log(`\n 🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠\n🧠 LaVie Saude Mental LTDA 🧠\n 🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠\n\n${EQUIPE} `));
