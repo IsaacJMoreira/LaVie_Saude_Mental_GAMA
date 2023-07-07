@@ -26,4 +26,4 @@ app.use(errorHandler);
 // appear cleaner. The callback function that we pass to it is only a 
 // log, but we could and probaby should do more.
 
-app.listen(port, ()=> console.log(`\n 🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠\n🧠 LaVie Saude Mental LTDA 🧠\n 🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠\n\n${EQUIPE} `));
+app.listen(port, ()=> console.log(`\n 🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠\n🧠 LaVie Saude Mental  LTDA 🧠\n 🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠\n\n${EQUIPE} `));
