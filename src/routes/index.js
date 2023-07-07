@@ -4,7 +4,8 @@
 ////////////////////////////////////////////////////////////////////
 
 const express = require('express');
-const controllerPsicologos = require( "../controllers/controllerPsicologos.js");
+const controllerPsicologos = require("../controllers/controllerPsicologos.js");
+const controllerAtendimentos = require("../controllers/controllerAtendimentos.js");
 const middlewaresPsicologos = require("../middlewares/middlewaresPsicologos.js");
 const controllerLogin = require("../controllers/controllerLogin.js");
 const routes = express.Router();
@@ -16,10 +17,10 @@ routes.use(express.json());//allows the server to uses JSON encoding
 ////////////////////////////////////////////////////////////////////
 
 
-    //ATENÇÃO ⚠  >>>>>>> POST LOGIN <<<<<<<
-    routes.post('/login',
+//ATENÇÃO ⚠  >>>>>>> POST LOGIN <<<<<<<
+routes.post('/login',
     controllerLogin.postLogin
-    );
+);
 
 
 ////////////////////////////////////////////////////////////////////
@@ -27,31 +28,31 @@ routes.use(express.json());//allows the server to uses JSON encoding
 ////////////////////////////////////////////////////////////////////
 
 routes.get(
-    '/psicologos',      
+    '/psicologos',
     controllerPsicologos.getAll
-    );
+);
 
 routes.get(
     '/psicologos/:id',
     controllerPsicologos.getPsicologoById
-    );
+);
 
 routes.post('/psicologos',
     middlewaresPsicologos.postPsicologo,
     controllerPsicologos.postPsicologo
-    );
+);
 
 routes.put(
     '/psicologos/:id',
     middlewaresPsicologos.putPsicologoById,
     controllerPsicologos.putPsicologoById
-    );
+);
 
 routes.delete(
     '/psicologos/:id',
     controllerPsicologos.deletePsicologoById
-    );
-    
+);
+
 // ////////////////////////////////////////////////////////////////////
 // /*                        CRUD PACIENTE                           */
 // ////////////////////////////////////////////////////////////////////
@@ -90,23 +91,23 @@ routes.delete(
 // /*                       CRUD ATENDIMENTO                         */
 // ////////////////////////////////////////////////////////////////////
 
-// routes.get(
-//     '/atendimentos',
-//     middlewaresAtendimentos.getAll,
-//     controllerAtendimentos.getAll
-//     );
+routes.get(
+    '/atendimentos',
 
-// routes.get(
-//     '/atendimentos/:id',
-//     middlewaresAtendimentos.getAtendimentoById,
-//     controllerAtendimentos.getAtendimentoById
-//     );
+    controllerAtendimentos.getAll
+);
 
-// routes.post(
-//     '/atendimentos',
-//     middlewaresAtendimentos.postAtendimento,
-//     controllerAtendimentos.postAtendimento
-//     );
+routes.get(
+    '/atendimentos/:id',
+
+    controllerAtendimentos.getAtendimentoById
+);
+
+routes.post(
+    '/atendimentos',
+
+    controllerAtendimentos.postAtendimento
+);
 
 
 ////////////////////////////////////////////////////////////////////
