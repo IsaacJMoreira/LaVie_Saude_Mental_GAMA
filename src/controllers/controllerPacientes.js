@@ -40,7 +40,7 @@ const controllerPacientes = {
             },
         }
         );
-        res.status(200).json(pacienteAtualizado);
+        res.status(200).json(await Pacientes.findByPk(id));
     },
     async deletePacienteById(req, res){
         const { id } = req.params;
