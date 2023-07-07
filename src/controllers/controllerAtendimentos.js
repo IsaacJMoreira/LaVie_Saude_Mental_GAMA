@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-=======
-
 const { Atendimentos } = require('../models');
 const bcrypt = require("bcryptjs");
 const errors = require('../core/errors/errors.js');
@@ -35,6 +32,4 @@ const controllerAtendimentos = {
     },
     };
 
-module.exports = controllerAtendimentos
-  
->>>>>>> 051dfd8f7169aafa4e1797bce5f79133406e0630
+module.exports = controllerAtendimentos;
