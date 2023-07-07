@@ -1,4 +1,3 @@
-
 const { Atendimentos } = require('../models');
 const bcrypt = require("bcryptjs");
 const errors = require('../core/errors/errors.js');
@@ -33,5 +32,4 @@ const controllerAtendimentos = {
     },
     };
 
-module.exports = controllerAtendimentos
-  
+module.exports = controllerAtendimentos;
