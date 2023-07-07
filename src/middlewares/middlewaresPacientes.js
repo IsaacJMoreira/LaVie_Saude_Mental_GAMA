@@ -5,7 +5,7 @@ const validatePost = validate({
   body: Joi.object({
       nome: Joi.string().required(),
       email: Joi.string().email().required(),
-      nascimento: Joi.date().require(),
+      nascimento: Joi.date().required(),
     })
   })
 

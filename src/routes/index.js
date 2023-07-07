@@ -8,6 +8,7 @@ const controllerPsicologos = require("../controllers/controllerPsicologos.js");
 const controllerAtendimentos = require("../controllers/controllerAtendimentos.js");
 const controllerPacientes = require("../controllers/controllerPacientes.js");
 const middlewaresPsicologos = require("../middlewares/middlewaresPsicologos.js");
+const middlewaresPacientes = require('../middlewares/middlewaresPacientes.js');
 const controllerLogin = require("../controllers/controllerLogin.js");
 const routes = express.Router();
 
@@ -60,31 +61,28 @@ routes.delete(
 
 routes.get(
     '/pacientes',
-    //middlewaresPacientes.getAll,
     controllerPacientes.getAll
     );
 
 routes.get(
     '/pacientes/:id',
-   // middlewaresPacientes.getPacienteById,
     controllerPacientes.getPacienteById
     );
 
 routes.post(
     '/pacientes',
-    //middlewaresPacientes.postPaciente,
+    middlewaresPacientes.postPaciente,
     controllerPacientes.postPaciente
     );
 
 routes.put(
     '/pacientes/:id',
-   // middlewaresPacientes.putPacienteById,
+    middlewaresPacientes.putPacienteById,
     controllerPacientes.putPacienteById
     );
 
 routes.delete(
     '/pacientes/:id',
-    //middlewaresPacientes.deletePacienteById,
     controllerPacientes.deletePacienteById
     );    
 
