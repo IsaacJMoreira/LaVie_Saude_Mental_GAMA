@@ -6,6 +6,7 @@
 const express = require('express');
 const controllerPsicologos = require( "../controllers/controllerPsicologos.js");
 const middlewaresPsicologos = require("../middlewares/middlewaresPsicologos.js");
+const middlewaresAtendimentos = require("../middlewares/middlewaresAtendimentos.js")
 const controllerLogin = require("../controllers/controllerLogin.js");
 const routes = express.Router();
 
@@ -90,23 +91,24 @@ routes.delete(
 // /*                       CRUD ATENDIMENTO                         */
 // ////////////////////////////////////////////////////////////////////
 
-// routes.get(
-//     '/atendimentos',
-//     middlewaresAtendimentos.getAll,
-//     controllerAtendimentos.getAll
-//     );
 
-// routes.get(
-//     '/atendimentos/:id',
-//     middlewaresAtendimentos.getAtendimentoById,
-//     controllerAtendimentos.getAtendimentoById
-//     );
+ routes.get(
+    '/atendimentos',
+     middlewaresAtendimentos.getAll,
+     controllerAtendimentos.getAll
+     );
 
-// routes.post(
-//     '/atendimentos',
-//     middlewaresAtendimentos.postAtendimento,
-//     controllerAtendimentos.postAtendimento
-//     );
+routes.get(
+    '/atendimentos/:id',
+    middlewaresAtendimentos.getAtendimentoById,
+    controllerAtendimentos.getAtendimentoById
+    );
+
+routes.post(
+   '/atendimentos',
+    middlewaresAtendimentos.postAtendimento,
+    controllerAtendimentos.postAtendimento
+    );
 
 
 ////////////////////////////////////////////////////////////////////
