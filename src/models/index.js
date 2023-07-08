@@ -11,11 +11,11 @@ Atendimentos.belongsTo(Pacientes, {
 });
 
 Pacientes.hasMany(Atendimentos, {
-    fireignKey: 'id_paciente'
+    foreignKey: 'id_paciente'
 });
 
 Psicologos.hasMany(Atendimentos, {
-    fireignKey: 'id_psicologos'
+    foreignKey: 'id_psicologo'
 });
 
 module.exports ={

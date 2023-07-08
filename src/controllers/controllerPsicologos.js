@@ -6,7 +6,9 @@ const controllerPsicologos = {
     //GET
     getAll: async (req, res) =>{
         const listagemPsicologos = await Psicologos.findAll();
-
+        if(listagemPsicologos.length === 0){
+            return res.status(200).json({});
+        }
         res.json(listagemPsicologos);
     },
 
