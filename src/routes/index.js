@@ -8,7 +8,11 @@ const controllerPsicologos = require("../controllers/controllerPsicologos.js");
 const controllerAtendimentos = require("../controllers/controllerAtendimentos.js");
 const controllerPacientes = require("../controllers/controllerPacientes.js");
 const middlewaresPsicologos = require("../middlewares/middlewaresPsicologos.js");
+
+const middlewaresAtendimentos = require("../middlewares/middlewaresAtendimentos.js")
+
 const middlewaresPacientes = require('../middlewares/middlewaresPacientes.js');
+
 const controllerLogin = require("../controllers/controllerLogin.js");
 const routes = express.Router();
 
@@ -104,7 +108,7 @@ routes.get(
 
 routes.post(
     '/atendimentos',
-
+    middlwwaresAtendimentos.postAtendimento,
     controllerAtendimentos.postAtendimento
 );
 

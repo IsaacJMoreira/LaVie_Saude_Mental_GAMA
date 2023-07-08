@@ -1,6 +1,37 @@
-//VAI QUE É TUA, VALFRIDO
+//VAI QUE É TUA, YOSEF
+const { validate, Joi } = require("express-validation");
+const Atendimentos = require ("../controllers/controllerAtendimentos.js");
 
-import errors from '../core/errors/errors.js';
+const validatePost = validate({
+  body: Joi.object({
+      paciente_id: Joi.number().integer().required(),
+      data_atendimento: Joi.date().iso().required(), 
+      observacao: Joi.string().min(50).max(1000).required()
+    })
+  })
+
+  
+//const validatePut = validate({
+  //body: Joi.object({
+    //paciente_id: Joi.number().integer().required(),
+    //data_atendimento: Joi.date().iso().required(), 
+    //observacao: Joi.string().min(50).max(1000).required()
+    //})
+  //})
+
+const middlewaresAtendimentos = {
+  postAtendimento: async (req, res, next) => { 
+    await validatePost(req, res, next);  
+  },
+  //getAtendimentoById: async (req, res, next) => { 
+    //await validatePut(req, res, next);  
+  //},
+  };
+
+  module.exports = middlewaresAtendimentos;
+
+
+/*import errors from '../core/errors/errors.js';
 
 export const validate = (req, res, next) => {
   const { body: { name, email } } = req;
@@ -14,4 +45,4 @@ export const validate = (req, res, next) => {
   }
 
   next();
-}
+}*/
