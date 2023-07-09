@@ -4,9 +4,9 @@ const Atendimentos = require ("../controllers/controllerAtendimentos.js");
 
 const validatePost = validate({
   body: Joi.object({
-      paciente_id: Joi.number().integer().required(),
-      data_atendimento: Joi.date().iso().required(), 
-      observacao: Joi.string().min(50).max(1000).required()
+      id_paciente: Joi.number().integer().required(),
+      atendimento: Joi.date().iso().required(), 
+      OBS: Joi.string().min(50).max(1000).required()
     })
   })
 

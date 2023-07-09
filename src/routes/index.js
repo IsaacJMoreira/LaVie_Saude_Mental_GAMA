@@ -108,7 +108,7 @@ routes.get(
 
 routes.post(
     '/atendimentos',
-    middlwwaresAtendimentos.postAtendimento,
+    middlewaresAtendimentos.postAtendimento,
     controllerAtendimentos.postAtendimento
 );
 
