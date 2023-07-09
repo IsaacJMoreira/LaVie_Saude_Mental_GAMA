@@ -33,3 +33,4 @@ const controllerAtendimentos = {
     };
 
 module.exports = controllerAtendimentos;
+
