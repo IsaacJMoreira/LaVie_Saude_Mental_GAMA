@@ -1,4 +1,3 @@
-
 ////////////////////////////////////////////////////////////////////
 /*                        REQUIREMENTS                            */
 ////////////////////////////////////////////////////////////////////
@@ -7,26 +6,23 @@ const express = require('express');
 const controllerPsicologos = require("../controllers/controllerPsicologos.js");
 const controllerAtendimentos = require("../controllers/controllerAtendimentos.js");
 const controllerPacientes = require("../controllers/controllerPacientes.js");
+const controllerDashboard = require('../controllers/controllerDashboard.js');
 const middlewaresPsicologos = require("../middlewares/middlewaresPsicologos.js");
 const middlewaresAtendimentos = require("../middlewares/middlewaresAtendimentos.js")
 const middlewaresPacientes = require('../middlewares/middlewaresPacientes.js');
 const middlewaresLogin = require('../middlewares/middlewaresLogin.js');
 const controllerLogin = require("../controllers/controllerLogin.js");
 const routes = express.Router();
-
 routes.use(express.json());//allows the server to uses JSON encoding
 
 ////////////////////////////////////////////////////////////////////
 /*                             LOGIN                              */
 ////////////////////////////////////////////////////////////////////
 
-
-//ATENÇÃO ⚠  >>>>>>> POST LOGIN <<<<<<<
 routes.post('/login',
     middlewaresLogin.postLogin,
     controllerLogin.postLogin
 );
-
 
 ////////////////////////////////////////////////////////////////////
 /*                        CRUD PSICÓLOGO                          */
@@ -111,6 +107,29 @@ routes.post(
     controllerAtendimentos.postAtendimento
 );
 
+////////////////////////////////////////////////////////////////////
+/*                            DASHBOARD                           */
+////////////////////////////////////////////////////////////////////
+
+routes.get(
+    '/dashboard/numero-pacientes',
+    controllerDashboard.NPA
+)
+
+routes.get(
+    '/dashboard/numero-atendimentos',
+    controllerDashboard.NAT
+)
+
+routes.get(
+    '/dashboard/numero-psicologos',
+    controllerDashboard.NPS
+)
+
+routes.get(
+    '/dashboard/statistica',
+    controllerDashboard.STAT
+)
 
 ////////////////////////////////////////////////////////////////////
 /*                       EXPORT   🛫 📦 🛬                        */
