@@ -1,17 +1,29 @@
-//VAI, DIEGO
+const { validate, Joi } = require("express-validation");
+const Pacientes = require ("../controllers/controllerPacientes.js");
 
-import errors from '../core/errors/errors.js';
+const validatePost = validate({
+  body: Joi.object({
+      nome: Joi.string().required(),
+      email: Joi.string().email().required(),
+      nascimento: Joi.date().required(),
+    })
+  })
 
-export const validate = (req, res, next) => {
-  const { body: { name, email } } = req;
+  const validatePut = validate({
+    body: Joi.object({
+        nome: Joi.string().optional(),
+        email: Joi.string().email().optional(),
+        nascimento: Joi.date().optional(),
+      })
+    })
 
-  if (!name || !email) {
-    return res.status(400).json({ message: errors.EMAIL_OR_NAME_EMPTY })
-  }
-
-  if (name.length > 50)  {
-    return res.status(400).json({ message: errors.NAME_LIMIT_CHARACTER })
-  }
-
-  next();
-}
+  const middewaresPacientes = {
+  postPaciente: async (req, res, next) => { 
+    await validatePost(req, res, next);  
+  },
+  putPacienteById: async (req, res, next) => { 
+    await validatePut(req, res, next);  
+  },
+  };
+    
+  module.exports = middewaresPacientes;
