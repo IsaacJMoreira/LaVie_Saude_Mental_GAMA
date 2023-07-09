@@ -20,6 +20,7 @@ const controllerAtendimentos = {
         res.json(atendimento);
       },
       postAtendimento: async (req,res) => {
+        console.log(req.id_psicologo);
         const{id_paciente,data_atendimento,observacao}= req.body
        
         const novoAtendimento = await Atendimentos.create({

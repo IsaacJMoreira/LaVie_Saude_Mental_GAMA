@@ -8,6 +8,7 @@ const controllerPsicologos = require( "../controllers/controllerPsicologos.js");
 const middlewaresPsicologos = require("../middlewares/middlewaresPsicologos.js");
 const middlewaresAtendimentos = require("../middlewares/middlewaresAtendimentos.js")
 const controllerLogin = require("../controllers/controllerLogin.js");
+const auth = require("../middlewares/auth.js");
 const routes = express.Router();
 
 routes.use(express.json());//allows the server to uses JSON encoding
@@ -105,7 +106,7 @@ routes.get(
     );
 
 routes.post(
-   '/atendimentos',
+   '/atendimentos', auth,
     middlewaresAtendimentos.postAtendimento,
     controllerAtendimentos.postAtendimento
     );
