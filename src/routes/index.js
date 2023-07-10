@@ -128,7 +128,7 @@ routes.get(
 )
 
 routes.get(
-    '/dashboard/statistica',
+    '/dashboard/statistics',
     controllerDashboard.STAT
 )
 

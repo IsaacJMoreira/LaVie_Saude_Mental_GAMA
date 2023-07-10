@@ -23,12 +23,12 @@ const controllerAtendimentos = {
       //POST
       postAtendimento: async (req,res) => {
         
-        const{id_paciente,data_atendimento,observacao}= req.body
+        const{id_paciente,atendimento,OBS}= req.body
        
         const novoAtendimento = await Atendimentos.create({
             id_paciente,
-            data_atendimento,
-            observacao,
+            atendimento,
+            OBS,
             id_psicologo: req.auth.id,  //now it uses auth. Beware ⚠  
         })
        return res.status(201).json(novoAtendimento);
