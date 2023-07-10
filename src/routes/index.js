@@ -75,9 +75,9 @@ routes.get(
     );
 
 routes.post(
-   '/atendimentos', auth,
-    middlewaresAtendimentos.postAtendimento,
-    controllerAtendimentos.postAtendimento
+   '/pacientes', 
+    middlewaresPacientes.postPaciente,
+    controllerPacientes.postPaciente
     );
 
 routes.put(
@@ -108,11 +108,10 @@ routes.get(
 );
 
 routes.post(
-    '/atendimentos',
-    middlewaresAtendimentos.postAtendimento,
-    controllerAtendimentos.postAtendimento
-);
-
+    '/atendimentos', auth,
+     middlewaresAtendimentos.postAtendimento,
+     controllerAtendimentos.postAtendimento
+     );
 
 ////////////////////////////////////////////////////////////////////
 /*                       EXPORT   🛫 📦 🛬                        */
