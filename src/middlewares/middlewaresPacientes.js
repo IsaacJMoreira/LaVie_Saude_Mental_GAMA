@@ -1,5 +1,4 @@
 const { validate, Joi } = require("express-validation");
-const Pacientes = require ("../controllers/controllerPacientes.js");
 
 const validatePost = validate({
   body: Joi.object({

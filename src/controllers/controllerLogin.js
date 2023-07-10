@@ -9,8 +9,6 @@ const controllerLogin = {
     postLogin: async (req, res)=>{
         const {email, senha} = req.body;
 
-        if(!email || !senha ) return res.status(401).json(errors.email_ou_senha_invalido);
-    
         const psicologo = await Psicologos.findOne({
             where:{
                 email,
