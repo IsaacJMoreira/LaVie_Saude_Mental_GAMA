@@ -6,7 +6,7 @@ const db = require('./database');
 const app = express();
 const port = 3000;
 
-const EQUIPE = "EQUIPE 1 \n>ISAAC MOREIRA\n>VALFRIDO BATISTA\n>APOLO LEONARD\n>DIEGO VICENTINI\n";
+const EQUIPE = "EQUIPE 1 \n>ISAAC MOREIRA\n>VALFRIDO BATISTA\n>APOLO LEONARD\n>DIEGO VICENTINI\n>YOSEF EGITO\n";
 
 db.hasConnection();
 
