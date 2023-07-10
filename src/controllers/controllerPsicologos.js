@@ -1,4 +1,4 @@
-const { Psicologos } = require("../models");
+const { Psicologos, Atendimentos } = require("../models");
 const bcrypt = require("bcryptjs");
 const errors = require('../core/errors/errors.js')
 
@@ -42,7 +42,16 @@ const controllerPsicologos = {
     deletePsicologoById: async (req,res) => {
         const {id} = req.params;
 
+        const atendimento = await Atendimentos.count({
+            where: {
+                id_psicologo : id
+            }
+        });
+
+        if(atendimento > 0) return res.status(403).json(errors.delete_forbidden);//we do this so we don't break our server.
+
         const psicologo = await Psicologos.findByPk(id);
+        
 
         if(!psicologo) return res.status(404).json( errors.id_nao_encontrada );
 
