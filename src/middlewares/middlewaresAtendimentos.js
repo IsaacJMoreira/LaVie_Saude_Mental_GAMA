@@ -13,6 +13,6 @@ const validatePost = validate({
 const middlewaresAtendimentos = {
   postAtendimento: async (req, res, next) => { 
     await validatePost(req, res, next);  
-  }
+  }};
 
   module.exports = middlewaresAtendimentos;
