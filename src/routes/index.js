@@ -12,6 +12,7 @@ const middlewaresAtendimentos = require("../middlewares/middlewaresAtendimentos.
 const middlewaresPacientes = require('../middlewares/middlewaresPacientes.js');
 const middlewaresLogin = require('../middlewares/middlewaresLogin.js');
 const controllerLogin = require("../controllers/controllerLogin.js");
+const auth = require("../middlewares/auth.js");
 const routes = express.Router();
 routes.use(express.json());//allows the server to uses JSON encoding
 
@@ -69,7 +70,7 @@ routes.get(
     );
 
 routes.post(
-    '/pacientes',
+   '/pacientes', 
     middlewaresPacientes.postPaciente,
     controllerPacientes.postPaciente
     );
@@ -102,10 +103,11 @@ routes.get(
 );
 
 routes.post(
-    '/atendimentos',
-    middlewaresAtendimentos.postAtendimento,
-    controllerAtendimentos.postAtendimento
-);
+
+    '/atendimentos', auth,
+     middlewaresAtendimentos.postAtendimento,
+     controllerAtendimentos.postAtendimento
+     );
 
 ////////////////////////////////////////////////////////////////////
 /*                            DASHBOARD                           */
