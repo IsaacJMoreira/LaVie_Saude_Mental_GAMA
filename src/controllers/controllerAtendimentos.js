@@ -29,7 +29,7 @@ const controllerAtendimentos = {
             id_paciente,
             data_atendimento,
             observacao,
-            id_psicologo: req.user.id,   
+            id_psicologo: req.auth.id,  //now it uses auth. Beware ⚠  
         })
        return res.status(201).json(novoAtendimento);
     },

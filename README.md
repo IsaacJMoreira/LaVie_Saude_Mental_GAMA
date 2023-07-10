@@ -1,1 +1,11 @@
-Mod Fala meu povo
+Equipe 1:
+
+  ISAAC MOREIRA
+  
+  VALFRIDO BATISTA
+  
+  APOLO LEONARD
+  
+  DIEGO VICENTINI
+  
+  YOSEF EGITO

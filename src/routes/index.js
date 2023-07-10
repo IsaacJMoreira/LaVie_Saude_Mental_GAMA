@@ -16,6 +16,7 @@ const auth = require("../middlewares/auth.js");
 const routes = express.Router();
 routes.use(express.json());//allows the server to uses JSON encoding
 
+
 ////////////////////////////////////////////////////////////////////
 /*                             LOGIN                              */
 ////////////////////////////////////////////////////////////////////
@@ -92,13 +93,11 @@ routes.delete(
 
 routes.get(
     '/atendimentos',
-
     controllerAtendimentos.getAll
 );
 
 routes.get(
     '/atendimentos/:id',
-
     controllerAtendimentos.getAtendimentoById
 );
 
@@ -134,7 +133,7 @@ routes.get(
 )
 
 ////////////////////////////////////////////////////////////////////
-/*                       EXPORT   🛫 📦 🛬                        */
+/*                       EXPORT   🛫 📦 🛬                      */
 ////////////////////////////////////////////////////////////////////
 
 
